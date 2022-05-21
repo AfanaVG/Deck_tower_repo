@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GestionPersonajeScript : MonoBehaviour
 {
+    public string nombre;
      public int saludMax = 100;
      public int saludActual;
+
+     public int energia;
+
+     public int fuerza;
+     public int magia;
 
      public int escudo = 0;
 
      public BarraSaludScript barraSaludScript;
+
+     public Text nombreTXT;
 
     void Start()
     {
@@ -17,6 +26,7 @@ public class GestionPersonajeScript : MonoBehaviour
         saludActual = saludMax;
         barraSaludScript.setSaludMaxima(saludMax);
         barraSaludScript.SetEscudo(escudo);
+        nombreTXT.text = nombre;
 
     }
 
