@@ -48,4 +48,15 @@ public class GestionPersonajeScript : MonoBehaviour
         }
         
     }
+
+    public void curar(int cura){
+        saludActual += cura;
+
+        if(saludActual > saludMax){
+            barraSaludScript.SetSalud(saludMax);
+        }else{
+            barraSaludScript.SetSalud(saludActual);
+        }
+        
+    }
 }

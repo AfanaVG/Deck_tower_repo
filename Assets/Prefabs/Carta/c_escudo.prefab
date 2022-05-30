@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 1151265012251880828}
   - component: {fileID: 1151265012251880831}
   m_Layer: 5
-  m_Name: Carta
+  m_Name: c_escudo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15558946830161a459d856be0d666c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carta: {fileID: 11400000, guid: f078a5baaf3964445bfa3f3488c2314b, type: 2}
+  carta: {fileID: 11400000, guid: 4da46ec3533906b48956227272815d18, type: 2}
   imgArte: {fileID: 1151265012755047921}
   txtNombre: {fileID: 1151265012282175529}
   txtDescripcion: {fileID: 1151265011092666685}
@@ -300,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb108b70d14730a42bfca971680e2836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
 --- !u!225 &1151265012251880831
 CanvasGroup:
   m_ObjectHideFlags: 0

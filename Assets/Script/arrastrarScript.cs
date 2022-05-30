@@ -5,12 +5,9 @@ using UnityEngine.EventSystems;
 
 public class arrastrarScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private Canvas canvas;
-    private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
     private void   Awake() {
-        rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
     public void OnBeginDrag(PointerEventData eventData)
@@ -23,7 +20,7 @@ public class arrastrarScript : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("OnDrag");
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        gameObject.transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
