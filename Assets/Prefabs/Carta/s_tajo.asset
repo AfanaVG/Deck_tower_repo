@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8baa5e3fc52e0e74e834efc939102b6f, type: 3}
-  m_Name: Nueva carta
+  m_Name: s_tajo
   m_EditorClassIdentifier: 
   id: 0
   nombre: Tajo
   descripcion: "Inflinge 3 puntos de da\xF1o al objetivo"
-  img: {fileID: 21300000, guid: 41a812df279c6994f88e3d298167bfa9, type: 3}
+  img: {fileID: 21300000, guid: 424c62946803f4a4ba6e4fb3ab866a67, type: 3}
