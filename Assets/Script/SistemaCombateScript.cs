@@ -8,7 +8,7 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class SistemaCombateScript : MonoBehaviour
 {
     public GameObject jugadorPrefab;
-    public GameObject enemigoPrefab;
+    public GameObject[] enemigoPrefab;
 
     public Transform posJugador;
     public Transform posEnemigo;
@@ -31,8 +31,8 @@ public class SistemaCombateScript : MonoBehaviour
     {
         GameObject jugadorGO = Instantiate(jugadorPrefab, posJugador.position,Quaternion.identity);
         jugadorGest = jugadorGO.GetComponent<GestionPersonajeScript>();
-
-        GameObject enemigoGO = Instantiate(enemigoPrefab, posEnemigo.position, enemigoPrefab.GetComponent<Transform>().rotation);
+        int enemigospawn = Random.Range(0, enemigoPrefab.Length);
+        GameObject enemigoGO = Instantiate(enemigoPrefab[enemigospawn], posEnemigo.position, enemigoPrefab[enemigospawn].GetComponent<Transform>().rotation);
         enemigoGest = jugadorGO.GetComponent<GestionPersonajeScript>();
 
         dialogo.SetActive(true);
