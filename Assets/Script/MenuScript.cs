@@ -5,11 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public GameObject clasMenuUI;
+    public static bool clasi_abierto = false;
+
     public void PlayGame (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame (){
         Application.Quit();
+    }
+
+    public void Clasi(){
+        if(clasi_abierto){
+            clasMenuUI.SetActive(false);
+            clasi_abierto = false;
+        }else
+        {
+            clasMenuUI.SetActive(true);
+            clasi_abierto = true;
+        }
     }
 }
