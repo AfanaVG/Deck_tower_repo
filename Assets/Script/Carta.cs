@@ -6,6 +6,7 @@ using UnityEngine;
 public class Carta : ScriptableObject
 {
     public int id;
+    public int poder;
     public string nombre;
     public string descripcion;
     public Sprite img;

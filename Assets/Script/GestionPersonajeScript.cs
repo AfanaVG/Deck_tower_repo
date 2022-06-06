@@ -19,14 +19,18 @@ public class GestionPersonajeScript : MonoBehaviour
      public BarraSaludScript barraSaludScript;
 
      public Text nombreTXT;
+     private Text energiaTXT;
+
+     public GameObject[] particle;
 
     void Start()
     {
 
-        saludActual = saludMax;
-        barraSaludScript.setSaludMaxima(saludMax);
-        barraSaludScript.SetEscudo(escudo);
-        nombreTXT.text = nombre;
+        this.saludActual = this.saludMax;
+        this.barraSaludScript.setSaludMaxima(this.saludMax);
+        this.barraSaludScript.SetEscudo(this.escudo);
+        this.nombreTXT.text = this.nombre;
+        this.energiaTXT = GameObject.Find("energiaTXT").GetComponent<Text>();
 
     }
 
@@ -35,28 +39,92 @@ public class GestionPersonajeScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space)){
             perderSalud(20);
+            recargarEnergia(3);
         }
+        //Debug.Log(energiaTXT.text.ToString());
     }
 
     public void perderSalud(int damage){
-        saludActual -= damage;
+        int damageRecibido = damage;
+        sfxReproductor(0);
+        if(this.escudo > 0){
+            damageRecibido -= this.escudo;
+            if(damageRecibido <= 0 ){
+                damageRecibido = 0;
+            }
 
-        if(saludActual < 0){
-            barraSaludScript.SetSalud(0);
+            this.escudo -= damage;
+            if(this.escudo <= 0){
+                this.barraSaludScript.SetEscudo(0);
+            }else{
+                this.barraSaludScript.SetEscudo(this.escudo);
+            }
+            
+        }
+
+        this.saludActual -= damageRecibido;
+        
+
+        if(this.saludActual < 0){
+            this.barraSaludScript.SetSalud(0);
         }else{
-            barraSaludScript.SetSalud(saludActual);
+            this.barraSaludScript.SetSalud(this.saludActual);
         }
         
     }
 
     public void curar(int cura){
-        saludActual += cura;
+        sfxReproductor(1);
+        this.saludActual += cura;
 
-        if(saludActual > saludMax){
-            barraSaludScript.SetSalud(saludMax);
+        if(this.saludActual >= this.saludMax){
+            this.barraSaludScript.SetSalud(saludMax);
+            this.saludActual = saludMax;
         }else{
-            barraSaludScript.SetSalud(saludActual);
+            this.barraSaludScript.SetSalud(this.saludActual);
+        } 
+    }
+
+    public void protegerse(int armadura){
+        sfxReproductor(2);
+        this.escudo += armadura;
+        this.barraSaludScript.SetEscudo(escudo);
+        
+    }
+
+    public void gastarEnergia(){
+        this.energia--;
+
+        if(energia <= 0){
+           this.energiaTXT.text = energia+" / 3";
+
+        }else{
+            this.energiaTXT.text = energia+" / 3";
+        } 
+    }
+
+    public void recargarEnergia(int recarga){
+        this.energia += recarga;
+        this.energiaTXT.text = energia+" / 3";
+    }
+
+    public void sfxReproductor(int sfx){
+        switch (sfx)
+        {
+            case 0:
+                Instantiate(particle[sfx],new Vector3(transform.position.x,transform.position.y*0.5f,transform.position.z-1),particle[sfx].transform.rotation);
+                break;
+            case 1:
+                Instantiate(particle[sfx],new Vector3(transform.position.x,transform.position.y*0.5f,transform.position.z-1),particle[sfx].transform.rotation);
+                break;
+            case 2:
+                Instantiate(particle[sfx],new Vector3(transform.position.x,transform.position.y*0.5f,transform.position.z-1),particle[sfx].transform.rotation);
+                break;
+            default:
+                break;
         }
         
     }
+
+
 }

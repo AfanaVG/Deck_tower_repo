@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: s_tajo
   m_EditorClassIdentifier: 
   id: 0
+  poder: 10
   nombre: Tajo
-  descripcion: "Inflinge 3 puntos de da\xF1o al objetivo"
+  descripcion: "Inflinge * puntos de da\xF1o al objetivo"
   img: {fileID: 21300000, guid: 424c62946803f4a4ba6e4fb3ab866a67, type: 3}

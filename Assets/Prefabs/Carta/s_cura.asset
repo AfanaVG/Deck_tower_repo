@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: s_cura
   m_EditorClassIdentifier: 
   id: 1
+  poder: 10
   nombre: Cura
-  descripcion: Recupera 5 puntos de salud
+  descripcion: Recupera * puntos de salud
   img: {fileID: 21300000, guid: 87dc45ee418bb4745b17a79578623051, type: 3}

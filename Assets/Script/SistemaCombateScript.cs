@@ -20,10 +20,13 @@ public class SistemaCombateScript : MonoBehaviour
     public Text dialogoTXT;
 
     public BattleState state;
+
+    private generadorManos generadorManos;
     
     void Start()
     {
         state = BattleState.START;
+        generadorManos = GameObject.Find("ManoCartas").GetComponent<generadorManos>();
         StartCoroutine(SetupBattle());
     }
 
@@ -51,8 +54,21 @@ public class SistemaCombateScript : MonoBehaviour
 
     void PlayerTurn()
         {
-            dialogoTXT.text = "Tu turno";
+            StartCoroutine(mostrarDialogo("Tu turno"));
+            
+            generadorManos.generarMano();
+            jugadorGest.recargarEnergia(3);
 
         }
+
+    IEnumerator mostrarDialogo(string txt){
+        dialogo.SetActive(true);
+
+        dialogoTXT.text = txt;
+
+        yield return new WaitForSeconds(1f);
+
+        dialogo.SetActive(false);
+    }
 
 }

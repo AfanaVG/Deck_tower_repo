@@ -43,6 +43,8 @@ void Pause(){
 }
 
 public void LoadMenu(){
+    Time.timeScale = 1f;
+    GamePaused = false;
     SceneManager.LoadScene("Menu");
 }
 
