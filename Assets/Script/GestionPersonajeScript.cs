@@ -19,7 +19,7 @@ public class GestionPersonajeScript : MonoBehaviour
      public BarraSaludScript barraSaludScript;
 
      public Text nombreTXT;
-     private Text energiaTXT;
+     
 
      public GameObject[] particle;
 
@@ -30,7 +30,7 @@ public class GestionPersonajeScript : MonoBehaviour
         this.barraSaludScript.setSaludMaxima(this.saludMax);
         this.barraSaludScript.SetEscudo(this.escudo);
         this.nombreTXT.text = this.nombre;
-        this.energiaTXT = GameObject.Find("energiaTXT").GetComponent<Text>();
+        
 
     }
 
@@ -39,7 +39,6 @@ public class GestionPersonajeScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space)){
             perderSalud(20);
-            recargarEnergia(3);
         }
         //Debug.Log(energiaTXT.text.ToString());
     }
@@ -56,11 +55,12 @@ public class GestionPersonajeScript : MonoBehaviour
             this.escudo -= damage;
             if(this.escudo <= 0){
                 this.barraSaludScript.SetEscudo(0);
+                escudo = 0;
             }else{
                 this.barraSaludScript.SetEscudo(this.escudo);
             }
-            
         }
+
 
         this.saludActual -= damageRecibido;
         
@@ -90,22 +90,6 @@ public class GestionPersonajeScript : MonoBehaviour
         this.escudo += armadura;
         this.barraSaludScript.SetEscudo(escudo);
         
-    }
-
-    public void gastarEnergia(){
-        this.energia--;
-
-        if(energia <= 0){
-           this.energiaTXT.text = energia+" / 3";
-
-        }else{
-            this.energiaTXT.text = energia+" / 3";
-        } 
-    }
-
-    public void recargarEnergia(int recarga){
-        this.energia += recarga;
-        this.energiaTXT.text = energia+" / 3";
     }
 
     public void sfxReproductor(int sfx){

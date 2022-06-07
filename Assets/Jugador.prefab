@@ -1702,12 +1702,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ddbae613aea1c498d406c153dc1a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: '-'
+  nombre: Afana
   saludMax: 100
   saludActual: 0
   energia: 0
   fuerza: 10
-  magia: 0
+  magia: 5
   escudo: 0
   barraSaludScript: {fileID: 4832178440481300419}
   nombreTXT: {fileID: 7406860853032064324}

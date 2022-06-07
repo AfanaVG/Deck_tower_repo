@@ -11,9 +11,11 @@ public class enemigoDrop : MonoBehaviour, IDropHandler
     private GameObject gc;
     private Carta cartaSel;
     private GameObject jugador;
+    private SistemaCombateScript sistema;
 
     private void Start(){
         jugador = GameObject.FindGameObjectsWithTag("Player")[0];
+        sistema = GameObject.Find("SistemaCombate").GetComponent<SistemaCombateScript>();
         generadorManos = GameObject.Find("ManoCartas").GetComponent<generadorManos>();
         
     }
@@ -24,7 +26,7 @@ public class enemigoDrop : MonoBehaviour, IDropHandler
         //cartaSel = eventData.pointerDrag.GetComponent<cartaDisplay>().carta.id;
         cartaSel = eventData.pointerDrag.GetComponent<cartaDisplay>().carta;
         gc = eventData.pointerDrag;
-        jugador.GetComponent<GestionPersonajeScript>().gastarEnergia();
+        sistema.usarCarta();
 
         switch (cartaSel.id)
         {

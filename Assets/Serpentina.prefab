@@ -73,12 +73,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombre: Serpentina
-  saludMax: 20
-  saludActual: 20
+  saludMax: 10
+  saludActual: 10
   energia: 1
-  fuerza: 1
+  fuerza: 5
   magia: 1
-  escudo: 1
+  escudo: 0
   barraSaludScript: {fileID: 6165033149851089804}
   nombreTXT: {fileID: 6165033149344516334}
   particle:

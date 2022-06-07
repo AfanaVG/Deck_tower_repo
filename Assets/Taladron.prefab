@@ -1150,10 +1150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombre: Tala Dron
-  saludMax: 100
-  saludActual: 100
+  saludMax: 10
+  saludActual: 10
   energia: 1
-  fuerza: 1
+  fuerza: 20
   magia: 1
   escudo: 10
   barraSaludScript: {fileID: 2486030817805557101}
