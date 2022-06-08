@@ -26,9 +26,13 @@ public class SistemaCombateScript : MonoBehaviour
     public BattleState state;
 
     private GameObject generadorManos;
+    public DatabaseInGame dbIngame;
+    public pisoScript pisoScript;
     
     void Start()
     {
+        
+        dbIngame.GuardarPiso(3);
         state = BattleState.START;
         generadorManos = GameObject.Find("ManoCartas");
         this.energiaTXT = GameObject.Find("energiaTXT").GetComponent<Text>();
@@ -47,11 +51,12 @@ public class SistemaCombateScript : MonoBehaviour
 
         dialogoTXT.text = "Comienza el combate";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         dialogo.SetActive(false);
 
         state = BattleState.PLAYERTURN;
+        cargarJugador();
         PlayerTurn();
 
         
@@ -146,9 +151,12 @@ public class SistemaCombateScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Debug.Log(enemigoGest.saludActual);
         if (enemigoGest.saludActual <= 0){
+            Destroy(enemigoGO);
             state = BattleState.WON;
+            SistemaGuardado.Guardar(jugadorGest,pisoScript);
             StartCoroutine(mostrarDialogo("¡Has ganado!"));
         }else if(jugadorGest.saludActual <= 0){
+            Destroy(jugadorGO);
             StartCoroutine(mostrarDialogo("¡Has perdido!"));
             state = BattleState.LOST;
         }
@@ -161,6 +169,21 @@ public class SistemaCombateScript : MonoBehaviour
         generadorManos.SetActive(false); 
         state = BattleState.ENEMYTURN;
         StartCoroutine(turnoEnemigo());
+    }
+
+    private void cargarJugador(){
+        DatosJugador data = SistemaGuardado.cargar();
+
+        if (data != null)
+        {
+            jugadorGest.saludActual = data.saludActual;
+            jugadorGest.saludMax = data.saludMax;
+            jugadorGest.escudo = data.escudo;
+            jugadorGest.magia = data.magia;
+            jugadorGest.fuerza = data.fuerza;
+        }
+        StartCoroutine(jugadorGest.actualizarUI());
+        
     }
 
 }

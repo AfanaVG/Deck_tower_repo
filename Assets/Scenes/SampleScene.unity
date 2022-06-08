@@ -814,6 +814,49 @@ MonoBehaviour:
   - {fileID: 1151265012251880819, guid: 76c9ecd7e51e20e49a4a34cc41ea798a, type: 3}
   - {fileID: 1151265012251880819, guid: 168ac16ec6b347b46979413293a99ec1, type: 3}
   - {fileID: 1151265012251880819, guid: 66fb429b595a4f94f8cdd747aaf13c96, type: 3}
+--- !u!1 &755950413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755950415}
+  - component: {fileID: 755950414}
+  m_Layer: 0
+  m_Name: DatabaseInGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &755950414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755950413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fe1c707d4a3f545a8c2ac0970cdbd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &755950415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755950413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 902.2396, y: 509.31216, z: -86.441124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855018114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1383776061}
+  - component: {fileID: 1383776062}
   m_Layer: 5
   m_Name: Piso
   m_TagString: Untagged
@@ -1714,6 +1758,20 @@ RectTransform:
   m_AnchoredPosition: {x: -277, y: 91}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1383776062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383776060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1892e43127d07f4fa3d3c7cff2a3635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piso: 1
+  pisoTXT: {fileID: 196253417}
 --- !u!1 &1466577571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,6 +3036,8 @@ MonoBehaviour:
   dialogo: {fileID: 397909286}
   dialogoTXT: {fileID: 1501920811}
   state: 0
+  dbIngame: {fileID: 755950414}
+  pisoScript: {fileID: 1383776062}
 --- !u!4 &2095756472
 Transform:
   m_ObjectHideFlags: 0

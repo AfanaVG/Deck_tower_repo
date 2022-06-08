@@ -34,6 +34,12 @@ public class GestionPersonajeScript : MonoBehaviour
 
     }
 
+    public IEnumerator actualizarUI(){
+        yield return new WaitForSeconds(0.5f);
+        this.barraSaludScript.SetSalud(this.saludActual);
+        this.barraSaludScript.SetEscudo(this.escudo);
+    }
+
     // Update is called once per frame
     void Update()
     {
