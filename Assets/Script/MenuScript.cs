@@ -9,7 +9,7 @@ public class MenuScript : MonoBehaviour
     public static bool clasi_abierto = false;
 
     public void PlayGame (){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Transicion");
     }
 
     public void QuitGame (){
