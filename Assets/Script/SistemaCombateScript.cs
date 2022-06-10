@@ -14,6 +14,7 @@ public class SistemaCombateScript : MonoBehaviour
     public Transform posEnemigo;
 
     GestionPersonajeScript jugadorGest;
+    public GestionPersonajeScript jugadorInicio;
     GameObject jugadorGO;
     private Text energiaTXT;
 
@@ -28,6 +29,7 @@ public class SistemaCombateScript : MonoBehaviour
     private GameObject generadorManos;
     public DatabaseInGame dbIngame;
     public pisoScript pisoScript;
+    public avancePisoScript avancePisoScript;
     
     void Start()
     {
@@ -114,9 +116,10 @@ public class SistemaCombateScript : MonoBehaviour
         }
     }
 
-    public void usarCarta(){
+    public IEnumerator usarCarta(){
         gastarEnergia(1,jugadorGest);
         StartCoroutine(comprobarGanar());
+        yield return new WaitForSeconds(0.5f);
         if(jugadorGest.energia <= 0 && state == BattleState.PLAYERTURN){
             generadorManos.SetActive(false); 
             state = BattleState.ENEMYTURN;
@@ -126,7 +129,7 @@ public class SistemaCombateScript : MonoBehaviour
 
     IEnumerator turnoEnemigo(){
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
 
         StartCoroutine(mostrarDialogo(enemigoGest.nombre + " te ataca"));
 
@@ -153,12 +156,20 @@ public class SistemaCombateScript : MonoBehaviour
         if (enemigoGest.saludActual <= 0){
             Destroy(enemigoGO);
             state = BattleState.WON;
+            pisoScript.piso++;
             SistemaGuardado.Guardar(jugadorGest,pisoScript);
             StartCoroutine(mostrarDialogo("¡Has ganado!"));
+            yield return new WaitForSeconds(1f);
+            avancePisoScript.menuSig();
         }else if(jugadorGest.saludActual <= 0){
             Destroy(jugadorGO);
-            StartCoroutine(mostrarDialogo("¡Has perdido!"));
             state = BattleState.LOST;
+            pisoScript.piso = 1;
+            SistemaGuardado.Guardar(jugadorInicio,pisoScript);
+            StartCoroutine(mostrarDialogo("¡Has perdido!"));
+            yield return new WaitForSeconds(1f);
+            avancePisoScript.menuRe();
+            
         }
     }
 

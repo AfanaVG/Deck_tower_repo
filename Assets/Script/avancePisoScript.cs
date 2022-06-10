@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class avancePisoScript : MonoBehaviour
 {
-    public static bool GamePaused = false;
     public GameObject menuSiguienteUI;
     public GameObject menuReinicioUI;
 
@@ -27,14 +26,12 @@ public void menuRe(){
 
 public void CargarSig(){
     Time.timeScale = 1f;
-    GamePaused = false;
-    SceneManager.LoadScene("Menu");
+    SceneManager.LoadScene("Transicion");
 }
 
 public void CargarReinicio(){
     Time.timeScale = 1f;
-    GamePaused = false;
-    SceneManager.LoadScene("Menu");
+    SceneManager.LoadScene("Transicion");
 }
 
 public void QuitGame(){

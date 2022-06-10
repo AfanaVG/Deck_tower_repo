@@ -445,9 +445,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484871624}
-        m_TargetAssemblyTypeName: pausaScript, Assembly-CSharp
-        m_MethodName: Resume
+      - m_Target: {fileID: 1484871625}
+        m_TargetAssemblyTypeName: avancePisoScript, Assembly-CSharp
+        m_MethodName: CargarReinicio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1077,9 +1077,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484871624}
-        m_TargetAssemblyTypeName: pausaScript, Assembly-CSharp
-        m_MethodName: Resume
+      - m_Target: {fileID: 1484871625}
+        m_TargetAssemblyTypeName: avancePisoScript, Assembly-CSharp
+        m_MethodName: CargarSig
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3107,9 +3107,9 @@ RectTransform:
   - {fileID: 2124445122}
   - {fileID: 651478939}
   - {fileID: 1383776061}
-  - {fileID: 1700324870}
-  - {fileID: 344427176}
   - {fileID: 1603748648}
+  - {fileID: 344427176}
+  - {fileID: 1700324870}
   - {fileID: 1051962490}
   - {fileID: 1400012266}
   - {fileID: 1606800224}
@@ -3146,8 +3146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148abedfe7398434ab529c1cd375235d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSiguienteUI: {fileID: 0}
-  menuReinicioUI: {fileID: 0}
+  menuSiguienteUI: {fileID: 1400012265}
+  menuReinicioUI: {fileID: 1606800223}
 --- !u!1 &1490384731
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3551,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1484871623}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4062,7 +4062,7 @@ RectTransform:
   - {fileID: 855018115}
   - {fileID: 1734618901}
   m_Father: {fileID: 1484871623}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4754,11 +4754,13 @@ MonoBehaviour:
   - {fileID: 1147016885560380551, guid: 3279a56192bb1ee499cb9994476da150, type: 3}
   posJugador: {fileID: 2084938388}
   posEnemigo: {fileID: 1073136153}
+  jugadorInicio: {fileID: 1081912903, guid: aeabbe7f9105a8a40833eb4472e280cd, type: 3}
   dialogo: {fileID: 397909286}
   dialogoTXT: {fileID: 1501920811}
   state: 0
   dbIngame: {fileID: 755950414}
   pisoScript: {fileID: 1383776062}
+  avancePisoScript: {fileID: 1484871625}
 --- !u!4 &2095756472
 Transform:
   m_ObjectHideFlags: 0

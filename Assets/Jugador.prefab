@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Afana
   saludMax: 100
-  saludActual: 0
+  saludActual: 100
   energia: 0
   fuerza: 10
   magia: 5

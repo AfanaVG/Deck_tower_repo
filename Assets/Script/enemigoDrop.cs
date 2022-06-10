@@ -26,7 +26,7 @@ public class enemigoDrop : MonoBehaviour, IDropHandler
         //cartaSel = eventData.pointerDrag.GetComponent<cartaDisplay>().carta.id;
         cartaSel = eventData.pointerDrag.GetComponent<cartaDisplay>().carta;
         gc = eventData.pointerDrag;
-        sistema.usarCarta();
+        StartCoroutine(sistema.usarCarta()); 
 
         switch (cartaSel.id)
         {
