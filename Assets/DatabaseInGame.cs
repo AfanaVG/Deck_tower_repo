@@ -20,13 +20,23 @@ public class DatabaseInGame : MonoBehaviour
     public void GuardarPiso(int piso){
         Usuario nuevoUsuario = new Usuario("Afana", piso);
         string json = JsonUtility.ToJson(nuevoUsuario);
-        //dbReference.Child("usuarios").Child(usuarioID).SetRawJsonValueAsync(json);
-        StartCoroutine(comprobarMax(piso));
+        dbReference.Child("usuarios").Child(usuarioID).GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot sn = task.Result;
+                
+                if(int.Parse(sn.Child("piso").Value.ToString()) < piso){
+                    dbReference.Child("usuarios").Child(usuarioID).SetRawJsonValueAsync(json);
+                }
+            }
+        });
     }
 
-    private IEnumerator comprobarMax(int p){
-        
-        var n = dbReference.Child("usuarios").Child(usuarioID).Child("piso").GetValueAsync();
+    private bool comprobarMax(int p){
+        bool superado = false;
+        /*
+        var n = dbReference.Child("usuarios").EqualTo(usuarioID).GetValueAsync();
         yield return new WaitUntil(predicate: () => n.IsCompleted);
         
         if (n != null)
@@ -35,10 +45,35 @@ public class DatabaseInGame : MonoBehaviour
             DataSnapshot snapshot = n.Result;
             foreach (var item in snapshot.Children.Reverse<DataSnapshot>())
             {
+                Debug.Log(usuarioID);
+                
                 if(item.Child("piso").Value.ToString() == "5"){
+                    Debug.Log(usuarioID);
                     Debug.Log(false);
-                }                
+                } 
+                Debug.Log(item.Child("piso").Value);          
             } 
         }
+        */
+
+        dbReference.Child("usuarios").Child(usuarioID).GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot sn = task.Result;
+                Debug.Log("Piso base de datos "+sn.Child("piso").Value);
+                Debug.Log("Piso en partida "+ p);
+                
+                if(int.Parse(sn.Child("piso").Value.ToString()) < p){
+                    superado = true;
+                    //Debug.Log(superado);
+                }
+            }
+        });
+
+        return superado;
+
+
+        
     }
 }

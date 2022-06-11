@@ -77,8 +77,8 @@ public class DatabaseManagerScript : MonoBehaviour
             {
                 tablaNombre_array[i].text = item.Child("nombre").Value.ToString();
                 tablaPiso_array[i].text = item.Child("piso").Value.ToString();
-                Debug.Log("Nombre"+item.Child("nombre").Value);
-                Debug.Log("Piso"+item.Child("piso").Value);
+                // Debug.Log("Nombre"+item.Child("nombre").Value);
+                // Debug.Log("Piso"+item.Child("piso").Value);
                 i++;
             }
             

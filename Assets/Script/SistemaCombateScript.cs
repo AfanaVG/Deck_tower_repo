@@ -33,8 +33,6 @@ public class SistemaCombateScript : MonoBehaviour
     
     void Start()
     {
-        
-        dbIngame.GuardarPiso(3);
         state = BattleState.START;
         generadorManos = GameObject.Find("ManoCartas");
         this.energiaTXT = GameObject.Find("energiaTXT").GetComponent<Text>();
@@ -152,13 +150,14 @@ public class SistemaCombateScript : MonoBehaviour
 
     IEnumerator comprobarGanar(){
         yield return new WaitForSeconds(0.5f);
-        Debug.Log(enemigoGest.saludActual);
+        //Debug.Log(enemigoGest.saludActual);
         if (enemigoGest.saludActual <= 0){
             Destroy(enemigoGO);
             state = BattleState.WON;
             pisoScript.piso++;
             SistemaGuardado.Guardar(jugadorGest,pisoScript);
             StartCoroutine(mostrarDialogo("¡Has ganado!"));
+            dbIngame.GuardarPiso(pisoScript.piso);
             yield return new WaitForSeconds(1f);
             avancePisoScript.menuSig();
         }else if(jugadorGest.saludActual <= 0){
