@@ -6,16 +6,17 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
+//Clase que controla los usos de la base de datos en el menude clasificaciones
 public class DatabaseManagerScript : MonoBehaviour
 {
-    public TMP_InputField Nombre;
-    public TMP_InputField Piso;
+    public TMP_InputField Nombre; //Variable para debug
+    public TMP_InputField Piso; //Variable para debug
 
-    private string usuarioID;
-    private DatabaseReference dbReference;
+    private string usuarioID; //ID de usuario generada en base al dispotivo actual
+    private DatabaseReference dbReference; //Referencia a la base de datos Realtime de Firebase
 
-    public TMP_Text[] tablaNombre_array;
-    public TMP_Text[] tablaPiso_array;
+    public TMP_Text[] tablaNombre_array; //Array con los contenedores del nombre de los jugadores
+    public TMP_Text[] tablaPiso_array; //Array con los contenedores del piso de los jugadores
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class DatabaseManagerScript : MonoBehaviour
         
     }
 
+    //Metodo para debug
     public void CrearUsuario(){
         Usuario nuevoUsuario = new Usuario(Nombre.text, int.Parse(Piso.text));
         string json = JsonUtility.ToJson(nuevoUsuario);
@@ -40,29 +42,6 @@ public class DatabaseManagerScript : MonoBehaviour
         //no admite caracteres que no sean letras o números
         //dbReference.Child("usuarios").Child("deferre").SetRawJsonValueAsync(json);
         StartCoroutine("GetBoard");
-
-    }
-
-    public void GuardarPiso(int piso){
-        Usuario nuevoUsuario = new Usuario("Afana", piso);
-        string json = JsonUtility.ToJson(nuevoUsuario);
-        dbReference.Child("usuarios").Child(usuarioID).SetRawJsonValueAsync(json);
-        StartCoroutine(comprobarMax(piso));
-    }
-
-    private IEnumerator comprobarMax(int p){
-        var n = dbReference.Child("usuarios").Child("usuarioID").GetValueAsync();
-        yield return new WaitUntil(predicate: () => n.IsCompleted);
-        if (n != null)
-        {
-            DataSnapshot snapshot = n.Result;
-            foreach (var item in snapshot.Children.Reverse<DataSnapshot>())
-            {
-                if((int)item.Child("piso").Value > p){
-                    Debug.Log(false);
-                }                
-            } 
-        }
     }
 
     public IEnumerator GetBoard(){
@@ -77,14 +56,9 @@ public class DatabaseManagerScript : MonoBehaviour
             {
                 tablaNombre_array[i].text = item.Child("nombre").Value.ToString();
                 tablaPiso_array[i].text = item.Child("piso").Value.ToString();
-                // Debug.Log("Nombre"+item.Child("nombre").Value);
-                // Debug.Log("Piso"+item.Child("piso").Value);
                 i++;
             }
-            
         }
-        
-
     }
 
     public void cargarDatos(){

@@ -31,21 +31,11 @@ public class generadorManos : MonoBehaviour
                 mano[i] = cartas[ncarta];
                 var c = Instantiate(mano[i],posiciones[i].position,mano[i].transform.rotation);
                 //c.transform.parent = posiciones[i].transform;
-                c.transform.SetParent(posiciones[i], true);
+                c.transform.SetParent(posiciones[i], false);
+                c.transform.localScale = posiciones[i].transform.localScale;
+                c.transform.position = posiciones[i].position;
+
             }
         }
     }
-
-/*
-    public void ordenarMano(){
-        for (var i = 0; i < mano.Length; i++)
-        {
-            if(posiciones[i].transform.childCount > 0){
-                mano[i].transform.position = posiciones[i].transform.position;
-                mano[i].transform.parent = posiciones[i].transform;
-            }
-        }
-    }*/
-
-
 }
