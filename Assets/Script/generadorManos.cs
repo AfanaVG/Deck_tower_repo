@@ -2,26 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Clase que generara la mano de cartas
 public class generadorManos : MonoBehaviour
 {
-    public Transform[] posiciones;
-    public GameObject[] cartas;
-    public static GameObject[] mano = new GameObject[5];
+    public Transform[] posiciones; //Posiciones de las cartas en pantalla
+    public GameObject[] cartas; //Array Cartas que pueden ser generadas
+    public static GameObject[] mano = new GameObject[5]; // Cartas en la mano
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            generarMano();
-        }
-    }
-
+    //Metodo que controla las cartas creadas
     public void generarMano(){
         int ncarta = 0;
         for (var i = 0; i < mano.Length; i++)
@@ -30,7 +18,6 @@ public class generadorManos : MonoBehaviour
                 ncarta = Random.Range(0, cartas.Length);
                 mano[i] = cartas[ncarta];
                 var c = Instantiate(mano[i],posiciones[i].position,mano[i].transform.rotation);
-                //c.transform.parent = posiciones[i].transform;
                 c.transform.SetParent(posiciones[i], false);
                 c.transform.localScale = posiciones[i].transform.localScale;
                 c.transform.position = posiciones[i].position;

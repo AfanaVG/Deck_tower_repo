@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Clase que maneja las funciones del menu principal
 public class MenuScript : MonoBehaviour
 {
     public GameObject clasMenuUI;

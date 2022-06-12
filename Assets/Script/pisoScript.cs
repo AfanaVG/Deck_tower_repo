@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Clase que se encarga de impimer en la UI el piso actual
 public class pisoScript : MonoBehaviour
 {
 
@@ -15,6 +16,7 @@ public class pisoScript : MonoBehaviour
         pisoTXT.text = ""+piso;
     }
 
+    //Metodo que accede al archivo de guardado local
     private void cargarJugador(){
         DatosJugador data = SistemaGuardado.cargar();
 

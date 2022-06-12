@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Clase que maneja el menu de pausa
 public class pausaScript : MonoBehaviour
 {
 
@@ -17,39 +18,38 @@ public class pausaScript : MonoBehaviour
         }
     }
 
-public void paused(){
-    control();
-}
-
-void control(){
-    if(GamePaused){
-        Resume();
-    }else
-    {
-        Pause();
+    public void paused(){
+        control();
     }
-}
 
-public void Resume(){
-    pauseMenuUI.SetActive(false);
-    Time.timeScale = 1f;
-    GamePaused = false;
-}
+    void control(){
+        if(GamePaused){
+            Resume();
+        }else{
+            Pause();
+        }
+    }
 
-void Pause(){
-    pauseMenuUI.SetActive(true);
-    Time.timeScale = 0f;
-    GamePaused = true;
-}
+    public void Resume(){
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GamePaused = false;
+    }
 
-public void LoadMenu(){
-    Time.timeScale = 1f;
-    GamePaused = false;
-    SceneManager.LoadScene("Menu");
-}
+    void Pause(){
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GamePaused = true;
+    }
 
-public void QuitGame(){
-    Application.Quit();
-}
+    public void LoadMenu(){
+        Time.timeScale = 1f;
+        GamePaused = false;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
 
 }

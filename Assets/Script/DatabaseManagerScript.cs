@@ -44,6 +44,7 @@ public class DatabaseManagerScript : MonoBehaviour
         StartCoroutine("GetBoard");
     }
 
+    //Obtiene los 5 jugadores con la puntuación mas alta
     public IEnumerator GetBoard(){
         var n = dbReference.Child("usuarios").OrderByChild("piso").GetValueAsync();
 
@@ -61,6 +62,7 @@ public class DatabaseManagerScript : MonoBehaviour
         }
     }
 
+    //Metodo para acceder a la corutine desde la UI
     public void cargarDatos(){
         StartCoroutine("GetBoard");
     }

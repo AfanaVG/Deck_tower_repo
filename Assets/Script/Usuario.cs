@@ -1,5 +1,4 @@
-
-
+//Clase usada como constructor para guardar los datos en la base de datos
 public class Usuario
 {
 

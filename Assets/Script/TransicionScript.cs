@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+//Clase que maneja la escena usada de transicion entre escenas
 public class TransicionScript : MonoBehaviour
 {
     public TMP_Text pisoTXT;

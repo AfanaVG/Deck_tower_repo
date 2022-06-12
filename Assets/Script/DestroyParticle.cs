@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Destruira la particula tras esperar el tiempo establecido
 public class DestroyParticle : MonoBehaviour
 {
-
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

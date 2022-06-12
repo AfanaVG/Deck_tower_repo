@@ -3,52 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Clase que maneja los metodos y atributos del personaje
 public class GestionPersonajeScript : MonoBehaviour
 {
     public string nombre;
      public int saludMax = 100;
      public int saludActual;
-
      public int energia;
-
      public int fuerza;
      public int magia;
-
-     public int escudo = 0;
-
-     public BarraSaludScript barraSaludScript;
-
-     public Text nombreTXT;
-     
-
-     public GameObject[] particle;
+     public int escudo = 0; //Escudo del personaje
+     public BarraSaludScript barraSaludScript; //Clase que nos permitira acceder a los metodos de la barrra de salud en la UI
+     public Text nombreTXT; //Nombre del personaje en la UI
+     public GameObject[] particle; //Array con las particulas disponibles para el personaje
 
     void Start()
     {
-
         this.saludActual = this.saludMax;
         this.barraSaludScript.setSaludMaxima(this.saludMax);
         this.barraSaludScript.SetEscudo(this.escudo);
         this.nombreTXT.text = this.nombre;
-        
-
     }
 
+    //Metodo usado para actualizar los datos de la interfaz
     public IEnumerator actualizarUI(){
         yield return new WaitForSeconds(0.5f);
         this.barraSaludScript.SetSalud(this.saludActual);
         this.barraSaludScript.SetEscudo(this.escudo);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            perderSalud(20);
-        }
-        //Debug.Log(energiaTXT.text.ToString());
-    }
-
+    //El personaje perdera salud en base al valor recibido y a su escudo
     public void perderSalud(int damage){
         int damageRecibido = damage;
         sfxReproductor(0);
@@ -57,7 +41,6 @@ public class GestionPersonajeScript : MonoBehaviour
             if(damageRecibido <= 0 ){
                 damageRecibido = 0;
             }
-
             this.escudo -= damage;
             if(this.escudo <= 0){
                 this.barraSaludScript.SetEscudo(0);
@@ -66,19 +49,15 @@ public class GestionPersonajeScript : MonoBehaviour
                 this.barraSaludScript.SetEscudo(this.escudo);
             }
         }
-
-
         this.saludActual -= damageRecibido;
-        
-
         if(this.saludActual < 0){
             this.barraSaludScript.SetSalud(0);
         }else{
             this.barraSaludScript.SetSalud(this.saludActual);
-        }
-        
+        } 
     }
 
+    //Recupera la salud del jugador en base al valor recibido
     public void curar(int cura){
         sfxReproductor(1);
         this.saludActual += cura;
@@ -91,6 +70,7 @@ public class GestionPersonajeScript : MonoBehaviour
         } 
     }
 
+    //Añade escudo al jugador en base al valor recibido
     public void protegerse(int armadura){
         sfxReproductor(2);
         this.escudo += armadura;
@@ -98,7 +78,9 @@ public class GestionPersonajeScript : MonoBehaviour
         
     }
 
+    //Controla la particula generada
     public void sfxReproductor(int sfx){
+        //Para consultar la particula correspondiente a cada numero ver en el inspector del personaje correspondiente
         switch (sfx)
         {
             case 0:

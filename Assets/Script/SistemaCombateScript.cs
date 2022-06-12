@@ -3,33 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST } //Variable enumeracion que almacena los distintos estados del combate
 
 public class SistemaCombateScript : MonoBehaviour
 {
-    public GameObject jugadorPrefab;
-    public GameObject[] enemigoPrefab;
+    public GameObject jugadorPrefab; //Personaje que manejara el jugador
+    public GameObject[] enemigoPrefab; //Array con los enemigos que pueden ser generados
 
-    public Transform posJugador;
-    public Transform posEnemigo;
+    public Transform posJugador; //Posición del personaje jugador
+    public Transform posEnemigo; //Posición del personaje enemigo
 
-    GestionPersonajeScript jugadorGest;
-    public GestionPersonajeScript jugadorInicio;
-    GameObject jugadorGO;
-    private Text energiaTXT;
+    GestionPersonajeScript jugadorGest; //Script con los datos del jugador en la partida
+    public GestionPersonajeScript jugadorInicio; //Script con los datos del jugador base
+    GameObject jugadorGO; //Objeto del personaje jugador
+    private Text energiaTXT; //Texto con la energia actual del jugador en pantalla
 
-    GestionPersonajeScript enemigoGest;
-    GameObject enemigoGO;
+    GestionPersonajeScript enemigoGest; //Script con los datos del enemigo en la partida
+    GameObject enemigoGO; //Objeto del personaje enemigo
 
-    public GameObject dialogo;
-    public Text dialogoTXT;
+    public GameObject dialogo; //Panel usado para los dialogos de los turnos
+    public Text dialogoTXT; //Texto impreso entre turnos
 
-    public BattleState state;
+    public BattleState state; //Variable que controlara el estado actual de los turnos
 
-    private GameObject generadorManos;
-    public DatabaseInGame dbIngame;
-    public pisoScript pisoScript;
-    public avancePisoScript avancePisoScript;
+    private GameObject generadorManos; //Mano de cartas del jugador
+    public DatabaseInGame dbIngame; //Control de base de datos usado dentro del combate
+    public pisoScript pisoScript; //Control del piso en el que se encuentra el jugador
+    public avancePisoScript avancePisoScript; //Control de los menus para la transición entre pisos
     
     void Start()
     {
@@ -73,23 +73,18 @@ public class SistemaCombateScript : MonoBehaviour
 
     IEnumerator mostrarDialogo(string txt){
         dialogo.SetActive(true);
-
         dialogoTXT.text = txt;
-
         yield return new WaitForSeconds(1f);
-
         dialogo.SetActive(false);
     }
 
     public void gastarEnergia(int modo, GestionPersonajeScript p){
         p.energia--;
-
         switch (modo)
         {
             case 1:
                 if(p.energia <= 0){
                     this.energiaTXT.text = p.energia+" / 3";
-
                 }else{
                     this.energiaTXT.text = p.energia+" / 3";
                 } 
