@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "371270451208",
+    "firebase_url": "https://decktower-7cfc6-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "decktower-7cfc6",
+    "storage_bucket": "decktower-7cfc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371270451208:android:f0cc7545347f0c9f0111bd",
+        "android_client_info": {
+          "package_name": "com.Afana.DeckTower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371270451208-11kuu1b293ina4p23lprpete0qj4hmca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6J5IhxBjckOr_doIHLUKDwl5-_HMPO_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371270451208-11kuu1b293ina4p23lprpete0qj4hmca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

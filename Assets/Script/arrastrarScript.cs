@@ -3,39 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class arrastrarScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+//Clase que maneja los eventos relacionados con manipular la posicion de las cartas en pantalla
+public class arrastrarScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private Canvas canvas;
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
+    private CanvasGroup canvasGroup; //Clase necesaria para interactuar con la carta
+    private Vector3 original; //Posicion original de la carta
+
 
     private void   Awake() {
-        rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        original = GetComponent<Transform>().position;
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("BeginDrag");
-        canvasGroup.alpha = .6f;
+        canvasGroup.alpha = .9f;
         canvasGroup.blocksRaycasts = false;
     }
 
+    //Centra la carta en el puntero del ratón
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        gameObject.transform.position = Input.mousePosition;
     }
 
+    //Contrala lo que sucede al soltar la carta
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("EndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        StartCoroutine("volver");
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("OnPinterDown");
+
+
+    //Devuelve la carta a su posición original en la mano
+    private IEnumerator volver(){
+        yield return new WaitForSeconds(0.1f);
+        gameObject.transform.position = original;
     }
 
 }
