@@ -29,6 +29,7 @@ public class DatabaseManagerScript : MonoBehaviour
 
     //Metodo para debug
     public void CrearUsuario(){
+        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
         Usuario nuevoUsuario = new Usuario(Nombre.text + usuarioID.Substring(usuarioID.Length - 4), int.Parse(Piso.text));
         string json = JsonUtility.ToJson(nuevoUsuario);
 
@@ -46,6 +47,7 @@ public class DatabaseManagerScript : MonoBehaviour
 
     //Obtiene los 5 jugadores con la puntuación mas alta
     public IEnumerator GetBoard(){
+        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
         var n = dbReference.Child("usuarios").OrderByChild("piso").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => n.IsCompleted);
