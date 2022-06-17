@@ -19,7 +19,7 @@ public class DatabaseInGame : MonoBehaviour
     //Guarda el piso actual en la base de datos si se supera el record anterior del jugador
     public void GuardarPiso(int piso){
         dbReference = FirebaseDatabase.DefaultInstance.RootReference; //Obtiene la referencia la base de datos
-        Usuario nuevoUsuario = new Usuario("Afana", piso);
+        Usuario nuevoUsuario = new Usuario("Afana"+ usuarioID.Substring(usuarioID.Length - 4), piso);
         string json = JsonUtility.ToJson(nuevoUsuario);
         dbReference.Child("usuarios").Child(usuarioID).GetValueAsync().ContinueWith(task =>
         {

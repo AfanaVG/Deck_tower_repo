@@ -29,7 +29,7 @@ public class DatabaseManagerScript : MonoBehaviour
 
     //Metodo para debug
     public void CrearUsuario(){
-        Usuario nuevoUsuario = new Usuario(Nombre.text, int.Parse(Piso.text));
+        Usuario nuevoUsuario = new Usuario(Nombre.text + usuarioID.Substring(usuarioID.Length - 4), int.Parse(Piso.text));
         string json = JsonUtility.ToJson(nuevoUsuario);
 
         /*
